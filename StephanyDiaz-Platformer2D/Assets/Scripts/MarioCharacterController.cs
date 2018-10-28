@@ -41,12 +41,14 @@ public class MarioCharacterController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.tag == "Floor")
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Floor")
 
-        this.GetComponent<Animator>().SetBool("MarioIsOnFloor", true);
+            this.GetComponent<Animator>().SetBool("MarioIsOnFloor", true);
         //Si mario collisiona con una estrella
-        if (col.gameObject.tag == "Coins"){
+        if (col.gameObject.tag == "Coins")
+        {
             //destruir la estrella
             GameObject.Destroy(col.gameObject);
 
@@ -54,11 +56,13 @@ public class MarioCharacterController : MonoBehaviour {
 
             GameObject.Find("Canvas/PanelCoins/Text").GetComponent<Text>().text = coins.ToString();
         }
-    }
   
-    public void EjecuteElSaltoDeMario(){
-        this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        this.GetComponent<Animator>().SetBool("MarioIsOnFloor", false);
-    }
-}
+        }
 
+        public void EjecuteElSaltoDeMario()
+
+        {
+            this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            this.GetComponent<Animator>().SetBool("MarioIsOnFloor", false);
+        }
+    }
